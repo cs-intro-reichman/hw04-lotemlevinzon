@@ -58,7 +58,7 @@ String[] newKeywords = new String[keywords.length];
                }  
         } 
         if (same) {
-                System.out.println(newSentences[i]);
+                System.out.println(sentences[i]);
                 break;
                }          
     } 
