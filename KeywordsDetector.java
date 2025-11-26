@@ -21,6 +21,50 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
-    }
+        String[] newSentences = new String[sentences.length];
+        for (int i = 0; i < sentences.length; i++) {
+            String lowcaseSentences = ""; 
+             for(int j = 0; j < sentences[i].length(); j++) {
+            char c = sentences[i].charAt(j);
+            if ((char)sentences[i].charAt(j) <= 90 && sentences[i].charAt(j) >= 65) {
+               lowcaseSentences  = lowcaseSentences  + (char)(sentences[i].charAt(j) + 32); 
+            } else {
+                lowcaseSentences  = lowcaseSentences  + c;
+            }
+        }  newSentences[i] = lowcaseSentences;
+         } 
+         
+String[] newKeywords = new String[keywords.length];
+        for (int i = 0; i < keywords.length; i++) {
+            String lowcaseKeywords = ""; 
+             for(int j = 0; j < keywords[i].length(); j++) {
+            char c = keywords[i].charAt(j);
+            if ((char)keywords[i].charAt(j) <= 90 && keywords[i].charAt(j) >= 65) {
+               lowcaseKeywords  = lowcaseKeywords  + (char)(keywords[i].charAt(j) + 32); 
+            } else {
+                lowcaseKeywords  = lowcaseKeywords  + c;
+            }
+        }  newKeywords[i] = lowcaseKeywords;
+         } 
+
+        for (int i = 0; i < newSentences.length; i++) {
+        for (int j = 0; j < newKeywords.length; j++) {
+            for (int k = 0; k <= newSentences[i].length() - newKeywords[j].length(); k++){ 
+                boolean same = true;
+                for (int l = 0; l < newKeywords[j].length(); l++)  {
+             if (newSentences[i].charAt(k + l) != newKeywords[j].charAt(l)) {
+                same = false;
+                break;
+               }  
+        } 
+        if (same) {
+                System.out.println(sentences[i]);
+                break;
+               }          
+    } 
+            } 
+        }
+    } 
 }
+
+
